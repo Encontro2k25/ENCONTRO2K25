@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encontro de Casais</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Arial', sans-serif; background-color: #f5f5f5; color: #333; }
+        nav { background-color: #00796b; padding: 15px; text-align: center; }
+        nav ul { list-style: none; display: flex; justify-content: center; }
+        nav ul li { margin: 0 20px; }
+        nav ul li a { color: white; text-decoration: none; font-size: 1.2em; font-weight: bold; }
+        nav ul li a:hover { text-decoration: underline; }
+        .container { width: 80%; max-width: 1200px; margin: auto; text-align: center; }
+        .section { padding: 60px 0; }
+        .inicio { background-color: #80cbc4; color: white; }
+        .subtitulo { font-size: 1.5em; margin: 20px 0; }
+        .sobre { background-color: #004d40; color: white; }
+        .inscricao { background-color: #00796b; color: white; }
+        .inscricao form { display: flex; flex-direction: column; max-width: 400px; margin: auto; text-align: left; }
+        .inscricao label { margin: 10px 0; }
+        .inscricao input { padding: 12px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc; }
+        .inscricao .btn-submit { background-color: #004d40; color: white; padding: 12px; border: none; border-radius: 5px; cursor: pointer; }
+        .inscricao .btn-submit:disabled { background-color: #aaa; cursor: not-allowed; }
+        .pagamento { background-color: #004d40; color: white; padding: 40px; margin-top: 20px; }
+        .pagamento ul { list-style: none; padding: 0; }
+        .pagamento li { margin-bottom: 15px; }
+        .pagamento a { display: inline-block; padding: 12px 25px; font-size: 1.2em; color: white; text-decoration: none; background-color: #00796b; border-radius: 5px; }
+        .pagamento a:hover { background-color: #004d40; }
+        .footer { background-color: #00796b; color: white; text-align: center; padding: 20px; }
+        .footer a { color: white; text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#sobre">Sobre o Evento</a></li>
+            <li><a href="#inscricao">Inscrição</a></li>
+        </ul>
+    </nav>
+
+    <section id="inicio" class="section inicio">
+        <div class="container">
+            <h1>Encontro de Casais</h1>
+            <p class="subtitulo">Palestra, Jantar e Música</p>
+        </div>
+    </section>
+
+    <section id="sobre" class="section sobre">
+        <div class="container">
+            <h2>Sobre o Evento</h2>
+            <p><strong>Data:</strong> 28 de Junho às 19:30</p>
+            <p><strong>Local:</strong> R. Tamanduás, 253 - Morumbi, Uberlândia</p>
+            <p><strong>Importante:</strong> Não será permitida a entrada de crianças.</p>
+        </div>
+    </section>
+
+    <section id="pagamento" class="section pagamento">
+        <div class="container">
+            <h2>Passo 1: Realizar Pagamento</h2>
+            <ul>
+                <li><a href="https://nubank.com.br/cobrar/17bxj0/67e8045b-dc79-44f6-bca4-ae4a889fb676" target="_blank" onclick="liberarInscricao()">Pagamento via Pix</a></li>
+                <li><a href="https://wa.me/5534988356552" target="_blank" onclick="liberarInscricao()">Parcelamento via WhatsApp</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="inscricao" class="section inscricao">
+        <div class="container">
+            <h2>Passo 2: Inscrição</h2>
+            <p><strong>Valor:</strong> R$ 150,00 por casal (R$ 75,00 por pessoa)</p>
+            <form id="form-inscricao" action="https://formspree.io/f/mkgjvzyj" method="POST">
+                <label for="nome">Nome do Casal:</label>
+                <input type="text" id="nome" name="nome" required disabled>
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required disabled>
+                <label for="whatsapp">WhatsApp:</label>
+                <input type="text" id="whatsapp" name="whatsapp" required disabled>
+                <button type="submit" class="btn-submit" id="btn-submit" disabled>Inscrever-se</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Para mais informações, entre em contato: <a href="mailto:admpmorumbi52@gmail.com">admpmorumbi52@gmail.com</a></p>
+        </div>
+    </footer>
+
+    <script>
+        function liberarInscricao() {
+            setTimeout(() => {
+                document.getElementById('nome').disabled = false;
+                document.getElementById('email').disabled = false;
+                document.getElementById('whatsapp').disabled = false;
+                document.getElementById('btn-submit').disabled = false;
+                alert("Pagamento realizado! Agora você pode preencher sua inscrição.");
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
